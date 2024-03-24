@@ -2,41 +2,44 @@ import React from 'react';
 import {useState} from 'react';
 import "./styles/style.css";
 
-const divs = [{id: 1, counter: 1, children: []}];
-let id=1;
 
-const CounterDiv = (counter, key) =>{
+const CounterDiv = ({counter, id, plus}) =>{
   return(
-    <div id={key}>
+    <div id={id}>
           <span>-</span>
           {counter}
-          <button onClick={() => plus(counter)}>+</button>
+          <button onClick={() => plus(id, counter)}>+</button>
           <button>-</button>
           <br />
     </div>
   )
 }
 
-const plus = (counter) =>{
-  <CounterDiv key={id++} counter={counter++} />
-  console.log(CounterDiv)
-};
-
 
 const Counter = () => {
-  const [div, setDiv] = useState(1)
+  const [divs, setDivs] = useState([{id: 1, counter:1, children: []}])
+  const [id, setId] = useState(1);
+  const [counter, setCounter] = useState(1);
     
+  const plus = (id, counter) =>{
+    const newDiv = {id: id+1, counter: counter+1, children:[]}
+    setId(id + 1);
+    console.log(id)
+    setCounter(counter + 1);
+    console.log(counter)
+
+    setDivs([...divs, newDiv])
+    console.log(divs)
+  };
 
 
-
-    return(
+  return (
     <div>
-        {divs.map((div) => {
-          return <CounterDiv key={divs.id} />
-        })}
-        
+      {divs.map((div) => (
+        <CounterDiv key={div.id} counter={div.counter} plus={plus} />
+      ))}
     </div>
-)
+  );
 }
 
 export default Counter; 
