@@ -43,3 +43,67 @@ const Counter = () => {
 }
 
 export default Counter; 
+
+
+// function Counter({ count, onIncrement, onDecrement, onDelete }) {
+//   return (
+//     <div>
+//       <span>-</span>
+//       {count}
+//       <button onClick={onIncrement}>+</button>
+//       <button onClick={onDecrement}>-</button> {/* Add onClick handler */}
+//       <br />
+//     </div>
+//   );
+// }
+
+// function CounterContainer({ initialCount, onDelete }) {
+//   const [count, setCount] = useState(initialCount);
+
+//   const handleIncrement = () => {
+//     setCount(count + 1);
+//   };
+
+//   const handleDecrement = () => {
+//     setCount(count - 1);
+//   };
+
+//   const handleDelete = () => {
+//     onDelete(); // Call onDelete to remove the current CounterContainer and its children
+//   };
+
+//   return (
+//     <div>
+//       <Counter
+//         count={count}
+//         onIncrement={handleIncrement}
+//         onDecrement={handleDecrement}
+//         onDelete={handleDelete}
+//       />
+//       {count > 1 && (
+//         <div>
+//           {[...Array(count - 1)].map((_, index) => (
+//             <CounterContainer key={index} initialCount={1} onDelete={handleDelete} />
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default function App() {
+//   const [count, setCount] = useState(1);
+
+//   const handleDelete = () => {
+//     setCount(0);
+//   };
+
+//   return (
+//     <CounterContainer initialCount={1} onDelete={handleDelete} />
+//   );
+// }
+
+
+
+
+
